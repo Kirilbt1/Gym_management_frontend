@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="text-center">
+    <h3 class="text-center display-6">Add an exercise: </h3>
+    <hr>
+    <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
+      <div class="grip p-fluid forma">
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon pi pi-info-circle"></span>
+            <input type="text" pInputText placeholder="Name for exercise" formControlName="name">
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon pi pi-link"></span>
+            <input type="text" pInputText placeholder="Url for picture" formControlName="url_picture">
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon pi pi-link"></span>
+            <input type="text" pInputText placeholder="Url for video (optional)" formControlName="url_video">
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 mb-3">
+          <textarea pInputTextarea class="mb-1" placeholder="Description" formControlName="description"></textarea>
+        </div>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary ms-2" (click)="goBack()">Go back</button>
+    </form>
+  </div>
+</div>

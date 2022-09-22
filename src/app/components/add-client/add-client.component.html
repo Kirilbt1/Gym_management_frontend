@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="text-center">
+    <h3 class="display-6">Client Add Form</h3>
+    <hr>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <div class="grip p-fluid forma">
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Name" formControlName="name">
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Surname" formControlName="surname">
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-home"></i></span>
+            <input type="text" pInputText placeholder="Address" formControlName="address">
+          </div>
+        </div>
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+            <input type="text" pInputText placeholder="Phone number" formControlName="phone_number">
+          </div>
+        </div>
+
+        <div class="col-4 mb-3">
+          <p-dropdown [options]="experiences" placeholder="Select your experience"
+                      optionLabel="name" optionValue="name"
+                      [showClear]="true" formControlName="experience"></p-dropdown>
+        </div>
+
+        <div class="col-4 mb-3">
+          <p-dropdown  [options]="trainers" placeholder="Select a Trainer"
+                      optionLabel="name" optionValue="id"
+                      [showClear]="true" formControlName="trainerId" (onChange)="onChangeTrainer()"></p-dropdown>
+        </div>
+
+        <div class="col-4">
+          <p-dropdown [options]="training_programs" placeholder="Select a Training program"
+                      optionLabel="name" optionValue="id"
+                      [showClear]="true"
+                      formControlName="trainingProgramId"></p-dropdown>
+        </div>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      <button type="button" class="btn btn-primary mt-3 ms-3" (click)="goBack()">Back</button>
+    </form>
+  </div>
+</div>

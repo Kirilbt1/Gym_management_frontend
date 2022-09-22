@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="text-center">
+    <h3 class="display-6">Training day add Form</h3>
+    <hr>
+    <form [formGroup]="trainingDayForm" (ngSubmit)="onSubmit()">
+      <div class="grip p-fluid forma">
+
+        <div class="col-4 md:col-4 mb-3">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Name" formControlName="name">
+          </div>
+        </div>
+
+        <div class="col-4 mb-3">
+          <p-dropdown  [options]="days" placeholder="Select a day"
+                       optionLabel="name" optionValue="name"
+                       [showClear]="true" formControlName="name_day"></p-dropdown>
+        </div>
+
+        <div class="col-4">
+          <p-multiSelect [options]="exercises" placeholder="Select an exercises"
+                      optionLabel="name" optionValue="id"
+                      [showClear]="true"
+                      formControlName="exercises"></p-multiSelect>
+        </div>
+      </div>
+      <hr>
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      <button type="button" class="btn btn-primary mt-3 ms-3" (click)="goBack()">Back</button>
+    </form>
+  </div>
+</div>

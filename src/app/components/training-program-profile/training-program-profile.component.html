@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <h3>Details about this training program</h3>
+  </div>
+  <div>
+    <div><span>Name : {{training_Program.name}}</span></div>
+    <div><span>Description : {{training_Program.description}}</span></div>
+    <div><span>Training plan : </span>
+      <div *ngFor="let training_day of training_Program.training_days">
+        <ul>{{training_day.name_day}}
+          <li *ngFor="let exercise of training_day.exercises">
+            <img [src]="exercise.url_picture" alt="exercise picture">
+            {{exercise.description}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

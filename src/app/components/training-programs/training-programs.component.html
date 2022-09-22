@@ -1,0 +1,69 @@
+<div class="container">
+  <h4 class="justify-content-center text-center display-5">Gym management application</h4>
+  <hr>
+  <p-table [value]="trainingPrograms" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-center">
+        Training programs table
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Training days</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-trainingProgram>
+      <tr>
+        <td>{{trainingProgram.id}}</td>
+        <td>{{trainingProgram.name}}</td>
+        <td>{{trainingProgram.description}}</td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              Training days
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let trainingDay of trainingProgram.training_days">
+                <button class="dropdown-item" (click)="showModalDialog(trainingDay)">{{trainingDay.name_day}}
+                  : {{trainingDay.name}}</button>
+              </li>
+            </ul>
+          </div>
+          <p-dialog header="Training day details" [(visible)]="displayModalDialog" [modal]="true"
+                    [style]="{width: '50vw'}"
+                    [draggable]="false" [resizable]="false">
+            <hr>
+            <div><span>Training day ID : {{this.trainingDayShow.id}}</span></div>
+            <div><span>Training day : {{this.trainingDayShow.name_day.toString()}}</span></div>
+            <div><span>Training day name : {{this.trainingDayShow.name}}</span></div>
+            <div><span>Training day exercises : </span></div>
+            <ul><li *ngFor="let exercise of this.trainingDayShow.exercises">{{exercise.name}}</li></ul>
+            <hr>
+            <ng-template pTemplate="footer">
+              <p-button icon="pi pi-check" (click)="displayModalDialog=false" label="Ok"
+                        styleClass="p-button-text"></p-button>
+            </ng-template>
+          </p-dialog>
+        </td>
+        <td>
+          <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger ms-1"
+                  (click)="deleteTrainingProgram(trainingProgram.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-center">
+        In total there <span *ngIf="trainingPrograms.length == 1">is {{trainingPrograms.length}}
+        training programs</span>
+        <span *ngIf="trainingPrograms.length != 1">are {{trainingPrograms.length}} training program</span>.
+      </div>
+    </ng-template>
+  </p-table>
+  <a type="button" class="btn btn-primary m-3" routerLink="/trainingProgramAdd">Add training program</a>
+  <a type="button" class="btn btn-primary m-3" routerLink="/trainingDayAdd">Add a training day</a>
+</div>
